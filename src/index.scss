@@ -1,0 +1,229 @@
+@import url('https://fonts.googleapis.com/css2?family=Prompt:ital,wght@0,100;0,400;0,500;0,600;0,700;1,100;1,300;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Vujahday+Script&display=swap');
+
+$color: #00BCD4;
+$red: #E53935;
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {font-family: 'Prompt', sans-serif;}
+
+.container,
+.container-fluid,
+.container-xxl,
+.container-xl,
+.container-lg,
+.container-md,
+.container-sm {
+    width: 100%;
+    padding-right: var(--bs-gutter-x, 0.75rem);
+    padding-left: var(--bs-gutter-x, 0.75rem);
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.game {
+    & > .container {
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+    }
+    background: rgb(107,225,186);
+    background: linear-gradient(140deg, rgba(28,167,236,1) 0%, rgba(31,47,152,1) 100%);
+}
+
+.score {
+    background-color: #ECEFF1;
+    border: 2px solid #00BCD4;
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    @media (max-width: 500px) {
+        & { padding: 10px; font-size: 13px;}
+    }
+    .name span {color: $color;}
+    .tries span {color: $red;}
+}
+
+.puzzle {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    height: calc(94% - 50px);
+    .hard {
+        width: 19%;
+        height: 24%;
+        @media (max-width: 500px) {
+            & {width: 24%;height: 19%;}
+            & .front {font-size: 75px !important;}
+            & .back {padding: 5px !important;}
+        }
+    }
+    .mediuam {
+        width: 24%;
+        height: 19%;
+
+        @media (min-width: 992px) {
+            width: 19%;
+            height: 24%;
+        }
+
+        @media (max-width: 430px) {
+            & .front {font-size: 75px !important;}
+            & .back {padding: 5px !important;}
+        }
+    }
+    .easy {
+        width: 24%;
+        height: 24%;
+        @media (max-width: 430px) {
+            & .front {font-size: 75px !important;}
+            & .back {padding: 5px !important;}
+        }
+    }
+    .game-block {
+        position: relative;
+        transition: .4s;
+        transform-style: preserve-3d;
+        &.selected,
+        &.finished {
+            transform: rotateY(180deg);
+            pointer-events: none;
+        }
+        &.no-click {pointer-events: none;}
+        .face {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 3px solid #00bcd4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            backface-visibility: hidden;
+        }
+        .front {
+            background: #2C3E50;
+            color: #FFF;
+            z-index: 1;
+            font-size: 90px;
+        }
+        .back {
+            padding: 15px;
+            background-color: #eceff1;
+            transform: rotateY(-180deg);
+            img {max-width: 100%;max-height: 100%;}
+        }
+    }
+}
+
+.home {
+    color: #FFF;
+    height: 100vh;
+    background: linear-gradient(140deg, rgba(255,123,137,1) 5%, rgba(138,80,130,1) 95%);
+    .container {
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        align-items: center;
+        height: 100%;
+        img {
+            width: 440px;
+            @media (max-width: 450px) {
+                & {max-width: 240px;}
+            }
+        }
+        form > * {display: block;}
+        form {
+            text-align: left;
+            label {font-size: 18px;}
+            input,
+            select,
+            button {
+                width: 400px;
+                padding: 12px 15px;
+                outline: none;
+                font-size: 15px;
+                margin-bottom: 20px;
+                margin-top: 8px;
+                background: transparent;
+                border: none;
+                border-bottom: 1px solid #CCC;
+                border-radius: 7px;
+                color: #FFF;
+                @media (max-width: 450px) {
+                    & {width: 250px;}
+                }
+            }
+            input::placeholder {color: #FFF;opacity: 1;}
+            input:-ms-input-placeholder {color: #FFF;}
+            input::-ms-input-placeholder {color: #FFF;}
+            select option {color: #34495E;}
+            button {
+                background-color: #e06c78;
+                font-weight: bold;
+                border: none;
+                cursor: pointer;
+                letter-spacing: 1px;
+            }
+        }
+        footer {
+            color: #FFF;
+            font-size: 21px;
+            font-family: "Vujahday Script", cursive;
+            letter-spacing: 1.5px;
+            span {font-weight: normal;}
+        }
+    }
+    .fixed {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 150, 136, .8);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        button {
+            color: #FFF;
+            background: #FFD54F;
+            cursor: pointer;
+            border: none;
+            border-radius: 4px;
+            font-size: 20px;
+            padding: 10px 25px;
+            letter-spacing: 1px;
+        }
+    }
+}
+
+
+
+@media (min-width: 576px) {
+    .container-sm, .container {max-width: 540px;}
+}
+
+@media (min-width: 768px) {
+    .container-md, .container-sm, .container {max-width: 720px;}
+}
+
+@media (min-width: 992px) {
+    .container-lg, .container-md, .container-sm, .container {max-width: 960px;}
+}
+
+@media (min-width: 1200px) {
+    .container-xl, .container-lg, .container-md, .container-sm, .container {max-width: 1140px;}
+}
+
+@media (min-width: 1400px) {
+    .container-xxl, .container-xl, .container-lg, .container-md, .container-sm, .container {max-width: 1320px;}
+}
