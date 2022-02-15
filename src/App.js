@@ -9,10 +9,6 @@ import 'react-toastify/dist/ReactToastify.min.css';
 import 'sweetalert2/src/sweetalert2.scss'
 import './index.scss';
 
-/* 
-import './sweetalert.min.css';
-*/
-
 function App() {
 
   return (

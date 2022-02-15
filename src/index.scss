@@ -66,12 +66,7 @@ body {font-family: 'Prompt', sans-serif;}
     }
     .mediuam {
         width: 24%;
-        height: 19%;
-
-        @media (min-width: 992px) {
-            width: 19%;
-            height: 24%;
-        }
+        height: 24%;
 
         @media (max-width: 430px) {
             & .front {font-size: 75px !important;}

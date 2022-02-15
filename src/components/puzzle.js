@@ -14,14 +14,14 @@ function Puzzle({ setTries, tries }) {
     let hardest = 8;
     let history = useHistory();
     let MySwal = withReactContent(Swal)
-    let images = useMemo(() => ['1.png', '2.png', '3.png', '4.png', '5.png', '6.png', '7.png', '8.png', '9.png', '10.png', '1.png', '2.png', '3.png', '4.png', '5.png', '6.png', '7.png', '8.png', '9.png', '10.png'], []);
+    let images = useMemo(() => ['1.png', '1.png', '2.png', '2.png', '3.png', '3.png', '4.png', '4.png', '5.png', '5.png', '6.png', '6.png', '7.png', '7.png', '8.png', '8.png', '9.png', '9.png', '10.png', '10.png'], []);
     let [userInfo, setInfo] = useState({level: false, style: false});
     let [order, setOrder] = useState([]);
     let [firstChoise, setFirst] = useState('');
     let [canClick, setClick] = useState(false);
     let [allChoosed, setChoosed] = useState([]);
     let [allFinished, setFinished] = useState([]);
-    let limit = parseInt(userInfo.level);
+    let limit = parseInt(userInfo.level) * 2;
     
     function handleClick(e, i) {
 
@@ -130,14 +130,15 @@ function Puzzle({ setTries, tries }) {
                 setTimeout(() => {
                     setChoosed(['All'])
                     setTimeout(() => {
+                        UseAudio('onstart')
                         setChoosed([])
                         setClick(true);
-                        UseAudio('onstart')
                     }, 2400)
                 }, 2000)
             }
         }
-    }, [images, history, imagesLoaded]);
+    // eslint-disable-next-line
+    }, [imagesLoaded]);
 
     return (
         <div className='puzzle' ref={wrapperRef}>
